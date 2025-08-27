@@ -22,7 +22,7 @@ export const TicketGenerator = () => {
   });
   const [output, setOutput] = useState("");
 
-  const slaOptions = ["Basic", "Silver", "Gold", "Bronze", "Platinum"];
+  const slaOptions = ["Basic", "Bronze", "Silver", "Gold", "Platinum"];
   const taskOptions = [
     "Replace HDD",
     "Replace RAM", 
