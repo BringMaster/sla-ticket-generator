@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Copy, FileText, Settings } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const TicketGenerator = () => {
   const { toast } = useToast();
@@ -115,7 +116,10 @@ ${formData.description || `Hi team, please ${formData.task.toLowerCase()} as req
     <div className="min-h-screen bg-gradient-background p-4">
       <div className="mx-auto max-w-4xl space-y-6">
         {/* Header */}
-        <div className="text-center space-y-2">
+        <div className="text-center space-y-2 relative">
+          <div className="absolute top-0 right-0">
+            <ThemeToggle />
+          </div>
           <div className="flex items-center justify-center gap-2 mb-4">
             <Settings className="h-8 w-8 text-primary" />
             <h1 className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
