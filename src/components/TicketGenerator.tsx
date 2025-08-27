@@ -14,6 +14,7 @@ export const TicketGenerator = () => {
     sla: "",
     task: "",
     taskTitle: "",
+    ticketNumber: "",
     location: "",
     serverId: "",
     description: "",
@@ -25,25 +26,57 @@ export const TicketGenerator = () => {
     "Replace HDD",
     "Replace RAM", 
     "Replace Server",
+    "Replace Motherboard",
+    "Replace Power Supply",
+    "Replace CPU",
+    "Replace Graphics Card",
+    "Replace Network Card",
     "Reboot Server",
-    "Run Diagnostics"
+    "Restart Services",
+    "Run Diagnostics",
+    "Run Memory Test",
+    "Run Disk Check",
+    "Update Firmware",
+    "Update BIOS",
+    "Install OS Updates",
+    "Configure RAID",
+    "Configure Network",
+    "Configure Firewall",
+    "Backup Data",
+    "Restore Data",
+    "Monitor Performance",
+    "Check System Logs",
+    "Replace UPS Battery",
+    "Replace Cooling Fan",
+    "Clean Server",
+    "Cable Management",
+    "Security Patch",
+    "Software Installation",
+    "License Renewal"
   ];
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData(prev => {
+      const newData = { ...prev, [field]: value };
+      // Auto-populate task title when task is selected
+      if (field === "task" && value) {
+        newData.taskTitle = value;
+      }
+      return newData;
+    });
   };
 
   const generateOutput = () => {
-    if (!formData.sla || !formData.task || !formData.taskTitle) {
+    if (!formData.sla || !formData.task) {
       toast({
         title: "Missing Information",
-        description: "Please fill in SLA, Task, and Task Title fields.",
+        description: "Please fill in SLA and Task fields.",
         variant: "destructive",
       });
       return;
     }
 
-    const ticketNumber = `TKT-${Date.now().toString().slice(-6)}`;
+    const ticketNumber = formData.ticketNumber || `TKT-${Date.now().toString().slice(-6)}`;
     
     const formatted = `[${formData.sla}] ${formData.taskTitle}
 SLA: ${formData.sla}
@@ -140,12 +173,23 @@ ${formData.description || `Hi team, please ${formData.task.toLowerCase()} as req
 
               {/* Input Fields */}
               <div className="space-y-2">
-                <Label htmlFor="taskTitle">Task Title *</Label>
+                <Label htmlFor="taskTitle">Task Title (Auto-populated)</Label>
                 <Input
                   id="taskTitle"
-                  placeholder="Enter task title"
+                  placeholder="Select a task to auto-populate"
                   value={formData.taskTitle}
                   onChange={(e) => handleInputChange("taskTitle", e.target.value)}
+                  className="bg-muted/50"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="ticketNumber">Ticket Number</Label>
+                <Input
+                  id="ticketNumber"
+                  placeholder="Auto-generated if empty"
+                  value={formData.ticketNumber}
+                  onChange={(e) => handleInputChange("ticketNumber", e.target.value)}
                 />
               </div>
 
