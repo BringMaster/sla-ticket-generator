@@ -185,7 +185,7 @@ ${formData.description || `Hi team, please ${formData.task.toLowerCase()} as req
                 <Label htmlFor="location">Location</Label>
                 <Input
                   id="location"
-                  placeholder="e.g., AMS-01, NYC-02"
+                  placeholder="e.g., AMS-01, SIN-01"
                   value={formData.location}
                   onChange={(e) => handleInputChange("location", e.target.value)}
                 />
@@ -195,7 +195,7 @@ ${formData.description || `Hi team, please ${formData.task.toLowerCase()} as req
                 <Label htmlFor="serverId">Server ID</Label>
                 <Input
                   id="serverId"
-                  placeholder="e.g., SRV-001, WEB-PROD-01"
+                  placeholder="e.g., 123456..."
                   value={formData.serverId}
                   onChange={(e) => handleInputChange("serverId", e.target.value)}
                 />
