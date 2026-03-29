@@ -22,7 +22,7 @@ export const TicketGenerator = () => {
   });
   const [output, setOutput] = useState("");
 
-  const slaOptions = ["Basic", "Bronze", "Silver", "Gold", "Platinum"];
+  const slaOptions = ["Basic", "Bronze", "Silver", "Gold", "Platinum", "PROACTIVE"];
   const taskOptions = [
     "Replace HDD",
     "Replace RAM", 
@@ -34,6 +34,7 @@ export const TicketGenerator = () => {
     "Replace NVMe",
     "Inspect Server",
     "Replace Fan",
+    "Check Cables",
     "Run IPMI Reset",
     "Configure RAID",
     "Configure Network",
